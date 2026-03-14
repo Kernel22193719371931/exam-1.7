@@ -14,20 +14,30 @@ def generate_launch_description():
         robot_desc = f.read()
     
     return LaunchDescription([
-        Node(package='exam_robot', executable='battery_node'),
-        Node(package='exam_robot', executable='distance_sensor'),
-        Node(package='exam_robot', executable='robot_status'),
-        Node(package='exam_robot', executable='motor_simulator'),
+        Node(
+            package='exam_robot',
+            executable='battery_node',
+            output='screen'
+        ),
+        Node(
+            package='exam_robot',
+            executable='distance_sensor',
+            output='screen'
+        ),
+        Node(
+            package='exam_robot',
+            executable='r_status',  # Должно совпадать с setup.py
+            output='screen'
+        ),
+        Node(
+            package='exam_robot',
+            executable='robot_controller',  # Новый узел
+            output='screen'
+        ),
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
-            parameters=[{'robot_description': robot_desc}]
-        ),
-        # Добавляем joint_state_publisher для публикации состояний суставов
-        Node(
-            package='joint_state_publisher',
-            executable='joint_state_publisher',
-            name='joint_state_publisher',
-            parameters=[{'source_list': ['']}]
+            parameters=[{'robot_description': robot_desc}],
+            output='screen'
         ),
     ])

@@ -11,85 +11,55 @@
     <color rgba="1 0 0 1"/>
   </material>
   
-  <!-- BASE LINK -->
+  <!-- BASE LINK - корпус 0.4×0.3×0.1 -->
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.3 0.2 0.1"/>
+        <box size="0.4 0.3 0.1"/>
       </geometry>
       <material name="blue"/>
     </visual>
   </link>
   
-  <!-- ЛЕВОЕ ПЕРЕДНЕЕ КОЛЕСО -->
-  <link name="wheel_left_front_link">
+  <!-- ЛЕВОЕ КОЛЕСО -->
+  <link name="left_wheel">
     <visual>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.04" radius="0.08"/>
       </geometry>
       <material name="black"/>
     </visual>
   </link>
   
-  <joint name="base_to_left_front_wheel" type="fixed">
+  <joint name="base_to_left_wheel" type="continuous">
     <parent link="base_link"/>
-    <child link="wheel_left_front_link"/>
-    <origin xyz="0.1 0.1 0"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 0.17 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
   </joint>
   
-  <!-- ПРАВОЕ ПЕРЕДНЕЕ КОЛЕСО -->
-  <link name="wheel_right_front_link">
+  <!-- ПРАВОЕ КОЛЕСО -->
+  <link name="right_wheel">
     <visual>
       <geometry>
-        <sphere radius="0.05"/>
+        <cylinder length="0.04" radius="0.08"/>
       </geometry>
       <material name="black"/>
     </visual>
   </link>
   
-  <joint name="base_to_right_front_wheel" type="fixed">
+  <joint name="base_to_right_wheel" type="continuous">
     <parent link="base_link"/>
-    <child link="wheel_right_front_link"/>
-    <origin xyz="0.1 -0.1 0"/>
-  </joint>
-  
-  <!-- ЛЕВОЕ ЗАДНЕЕ КОЛЕСО -->
-  <link name="wheel_left_back_link">
-    <visual>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-  
-  <joint name="base_to_left_back_wheel" type="fixed">
-    <parent link="base_link"/>
-    <child link="wheel_left_back_link"/>
-    <origin xyz="-0.1 0.1 0"/>
-  </joint>
-  
-  <!-- ПРАВОЕ ЗАДНЕЕ КОЛЕСО -->
-  <link name="wheel_right_back_link">
-    <visual>
-      <geometry>
-        <sphere radius="0.05"/>
-      </geometry>
-      <material name="black"/>
-    </visual>
-  </link>
-  
-  <joint name="base_to_right_back_wheel" type="fixed">
-    <parent link="base_link"/>
-    <child link="wheel_right_back_link"/>
-    <origin xyz="-0.1 -0.1 0"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 -0.17 0" rpy="1.5708 0 0"/>
+    <axis xyz="0 0 1"/>
   </joint>
   
   <!-- СЕНСОР -->
   <link name="sensor_link">
     <visual>
       <geometry>
-        <box size="0.05 0.05 0.1"/>
+        <box size="0.05 0.05 0.05"/>
       </geometry>
       <material name="red"/>
     </visual>
@@ -98,6 +68,6 @@
   <joint name="base_to_sensor" type="fixed">
     <parent link="base_link"/>
     <child link="sensor_link"/>
-    <origin xyz="0.15 0 0.1"/>
+    <origin xyz="0.2 0 0.08"/>
   </joint>
 </robot>
