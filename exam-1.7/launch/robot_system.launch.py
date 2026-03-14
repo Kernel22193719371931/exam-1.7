@@ -26,12 +26,12 @@ def generate_launch_description():
         ),
         Node(
             package='exam_robot',
-            executable='r_status',  # Должно совпадать с setup.py
+            executable='robot_status',
             output='screen'
         ),
         Node(
             package='exam_robot',
-            executable='robot_controller',  # Новый узел
+            executable='robot_controller', 
             output='screen'
         ),
         Node(
