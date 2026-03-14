@@ -21,7 +21,7 @@ setup(
         'console_scripts': [
             'battery_node = exam_robot.battery_node:main',
             'distance_sensor = exam_robot.distance_sensor:main',
-            'robot_status = exam_robot.robot_status:main',
+            'status_display = exam_robot.status_display:main',
             'robot_controller = exam_robot.robot_controller:main',
         ],
     },

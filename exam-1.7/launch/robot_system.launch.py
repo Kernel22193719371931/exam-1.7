@@ -26,7 +26,7 @@ def generate_launch_description():
         ),
         Node(
             package='exam_robot',
-            executable='robot_status',
+            executable='status_display',
             output='screen'
         ),
         Node(

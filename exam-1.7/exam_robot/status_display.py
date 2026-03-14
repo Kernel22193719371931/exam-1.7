@@ -7,7 +7,7 @@ class RobotStatus(Node):
     def __init__(self):
         super().__init__('robot_status')
         self.battery = 100.0
-        self.distance = 0.0
+        self.distance = 3.0
         self.status = ""
         
         self.battery_sub = self.create_subscription(
